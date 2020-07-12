@@ -1,0 +1,21 @@
+extends layout 
+block content 
+
+ nav#navbar
+  block scripts
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js")
+    script(src="./static/goldmember.js")
+     
+  h1.text-center(class="sectionHeading") Gold Member Page
+  hr
+  div.text-center(class="displayText") Welcome #{user.userinfo.given_name}, Your member ID is #{userId}.
+  br
+  div(class="displayText") Verify Gold Subscription
+  form(class="form-inline" style="float:center; margin: 0 auto;" action="#")
+    input(type="text" class="form-control" id="userId" style="display:none;" value={userId} placeholder="memberId")
+    input(type="text" class="form-control" id="memberId"  placeholder="Member ID")
+    input(type="text" class="form-control" id="lastName" style="margin:1%;" placeholder="Last Name ")
+    button.btn.btn-primary.my-2.my-sm-0(onClick="return searchUser(this)" type="button" style="margin:1%; width: 15%") Search
+  div(class="searchResult")
+

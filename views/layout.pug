@@ -1,0 +1,82 @@
+doctype html
+html(lang="en")
+  head
+    style(type="text/css").
+      .sectionHeading {
+        display: block;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+        font-weight: 200;
+        color: #192532;
+        font-size: 1.80rem;
+        line-height: 1.5rem;
+        letter-spacing: 0.2rem;
+        text-transform: uppercase;
+        text-rendering: optimizeLegibility;
+        margin-bottom: 5%;
+      }
+      .subHeading {
+          display: block;
+          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+          font-weight: 200;
+          color: #192532;
+          font-size: 1rem;
+          line-height: 1.5;
+          margin: 0;
+          text-transform: uppercase;
+          text-rendering: optimizeLegibility;
+      }
+      .displayText {
+        display: block;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+        font-weight: 200;
+        color: #192532;
+        font-size: 0.8rem;
+        line-height: 1.5rem;
+        letter-spacing: 0.156rem;
+        text-transform: uppercase;
+        text-rendering: optimizeLegibility;
+      }
+      .linkText {
+        display: block;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+        font-weight: 100;
+        font-size: 0.1rem;
+        line-height: 1.5rem;
+        letter-spacing: 0.156rem;
+        text-transform: uppercase;
+        color: white;
+        text-rendering: optimizeLegibility;
+      }
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    title Zillow Exclusive Listings
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous")
+    script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous")
+  body
+    nav.navbar.navbar-expand-md.navbar-light.bg-light.fixed-top
+      a.navbar-brand(href="#")
+        img.zillow(src="./stylesheets/logo.png" alt="Image Title")
+      button.navbar-toggler(type="button" data-toggle="collapse" data-target="#main-navbar")
+        span.navbar-toggler-icon
+      #main-navbar.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link(href="/" class="displayText") Home
+          li.nav-item
+            a.nav-link(href="/about", class="displayText") About
+          li.nav-item
+            if user
+              a.nav-link(href="/goldmember", class="displayText") Gold Member
+            else
+              a.nav-link(href="/Blog", class="displayText") Blog
+        if user
+          form.form-inline.my-2.my-lg-0(method='POST', action='/logout')
+            button.btn.btn-primary.my-2.my-sm-0(type="submit") Logout
+        else
+          form.form-inline.my-2.my-lg-0(action='/login')
+            button.btn.btn-primary.my-2.my-sm-0(type="submit") Login Or Register
+    main.container(role="main" style="padding: 100px;")
+        div
+          block content

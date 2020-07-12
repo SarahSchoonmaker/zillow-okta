@@ -1,0 +1,106 @@
+            body {
+                background-color: #DDDDDD;
+                padding: 50px;
+                font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+                background-size: cover;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            .sectionHeading {
+                font-family: "Lucida Console", Courier, monospace;
+                line-height: '1.125rem';
+                font-weight: '600';
+                color: red;
+            }
+            
+            h1 {
+                width: 50%;
+                color: #2B6CA4;
+            }
+            
+            p {
+                font-size: 25px;
+                color: #2B6CA4;
+            }
+            
+            ul {
+                margin: 0;
+                list-style-type: none;
+                display: flex;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+                background-color: #fff;
+            }
+            
+            li {
+                font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+                margin: 20px 20px 0 40px;
+            }
+            
+            a {
+                color: #2B6CA4;
+                ;
+                text-decoration: none;
+            }
+            
+            #login:hover {
+                cursor: pointer;
+                color: green;
+            }
+            
+            #one {
+                margin: 70px 0 200px 50px;
+            }
+            
+            .zillow {
+                margin: 0 auto;
+            }
+            
+            .zillow2 {
+                position: fixed;
+                bottom: 0;
+                width: 105%;
+                margin-left: -55px;
+                height: 180;
+            }
+            
+            #login {
+                font-size: 17px;
+            }
+            
+            .house {
+                margin-left: 60%;
+            }
+            
+            #text {
+                margin-top: 50px;
+                width: 50%;
+                font-size: 14px;
+            }
+            
+            .views {
+                display: flow-root;
+                float: right;
+            }
+            
+            @media(max-width:800px) {
+                .views {
+                    width: 250px;
+                    margin-right: 10px;
+                }
+                .house {
+                    display: block;
+                    margin-left: 0px;
+                    margin-top: 50px;
+                }
+            }
+            
+            @media(max-width:600px) {
+                .views {
+                    display: none;
+                }
+            }
