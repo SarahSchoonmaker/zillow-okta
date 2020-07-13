@@ -4,10 +4,9 @@ const goldmember =
 /* GET gold member page */
 router.get('/', function(req, res, next) {if (req.userContext) {
     const userId = req.userContext.userinfo.sub
-    console.log("yaw")
     res.render('goldmember.pug', { title: 'Gold Member Page', user: req.userContext, userId: userId });
   } else {
-    res.render('login.pug', { title: 'Okta Blog' })
+    res.render('login.pug', { title: 'Okta Zillow' })
   }
 });
 

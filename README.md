@@ -74,4 +74,3 @@ Please post any questions as issues in this repo, or visit our [Okta Developer F
 ## License
 
 Apache 2.0, see [LICENSE](LICENSE).
-# zillow-okta

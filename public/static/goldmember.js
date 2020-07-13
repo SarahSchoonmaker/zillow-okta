@@ -37,27 +37,31 @@ const getLoggedInUserData = async (userId) => {
     }
     const resp = await axios(options)
     console.log("This is resp?", resp);
+    const persistedLastName = resp.data.profile.lastName
+    localStorage.setItem("lastName", persistedLastName)
     return resp;
 }
 
 const searchUser = (e) => {
     const memberIdquery = $('#memberId').val()
     const lastNameQuery = $('#lastName').val()
+    const lastName = localStorage.getItem("lastName")
     let isGoldUser = false;
-    if(memberIdquery && lastNameQuery){
+    if(memberIdquery && lastNameQuery===lastName){
         const userId = e.value;
+        const corsurl = "https://cors-anywhere.herokuapp.com/";
         const options = {
             method: 'GET',
             headers: {
                 'Authorization': `SSWS ${API_KEY}`,
                 'Content-Type':  'application/json',
             },
-            url: `https://dev-772683-admin.okta.com/api/v1/groups/${GOLD_MEMBER_GROUP_ID}/users`
+            url: `${corsurl}https://dev-772683-admin.okta.com/api/v1/groups/${GOLD_MEMBER_GROUP_ID}/users`
         }
         axios(options).then((searchResult) => {
             const users = searchResult.data
             users.forEach((user) => {
-                console.log("user?", user, memberIdquery)
+                
                 if (user.id.toUpperCase() === memberIdquery) {
                     isGoldUser = true;
                 }
@@ -67,7 +71,7 @@ const searchUser = (e) => {
             if(isGoldUser) {
                 $('.searchResult').html(`<br>
 
-                <pre class="displayText"> ${firstName} ${lastName}, ${memberIdquery}, You are part of the gold group. Your manager ID is ${managerId}.</pre>
+                <pre class="displayText">Welcome, ${firstName} ${lastName}, Member ID: ${memberIdquery}, <br> You are part of the Gold Membership! Your manager ID is ${managerId}.</pre>
                 <a class="btn btn-primary my-2 my-sm-0 linkText" href="/goldsection"> Visit Gold Page </a> 
                 <br>`)
             } else {
@@ -75,6 +79,6 @@ const searchUser = (e) => {
             }
         });
     } else {
-        alert("Please fill in both member ID & Last Name")
+        alert("Last name doesn't match your Member ID. Please contact your admin about getting added to the Gold Member Group.")
     }
 }
